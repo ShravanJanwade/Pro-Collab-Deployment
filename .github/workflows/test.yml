@@ -1,0 +1,16 @@
+name: Test Stage
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Add test steps here (e.g., unit tests, integration tests)
