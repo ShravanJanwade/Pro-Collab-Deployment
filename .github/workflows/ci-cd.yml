@@ -1,0 +1,20 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    extends: ./.github/workflows/build.yml
+
+  test:
+    extends: ./.github/workflows/test.yml
+
+  deploy:
+    needs: [build, test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        uses: ./.github/workflows/deploy.yml
